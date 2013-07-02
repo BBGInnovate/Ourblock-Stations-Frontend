@@ -1,0 +1,13 @@
+body{
+	padding-top: 45px;
+}
+/** Branding **/
+#branding{
+	background: #02c7fe;
+	padding: 20px 0;
+	margin: 0 0 10px 0;
+}
+#branding-inner{}
+#branding-inner h1 small{
+	color: #FFF;
+}

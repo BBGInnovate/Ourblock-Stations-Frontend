@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ stationname }} {% endblock %}
+
+{% block styles %}
+    {{ parent() }}
+    <link href="/web/css/styles.css" rel="stylesheet">
+{% endblock %}
+
+{% block navigation %}
+    {{ parent() }}
+        <!-- nav -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                	<!-- todo $route->generate() -->
+                    <a class="brand" href="/home">{{ block('title') }}</a>
+                       <ul class="nav pull-right">
+					    {% for item in nav %}
+					    	<li><a href="{{ item.alias }}">{{ item.name }}</a></li>
+					    {% endfor %}
+                       </ul>
+                </div>
+            </div>
+        </nav>
+{% endblock %}
+
+{% block content %}
+
+    <!-- Branding Row -->
+    <div id="branding" class="">
+      <div id="branding-inner" class="container">
+        <div class="logo span2">
+            <img class="img-polaroid" title="{{ block('title') }}" src="/web/images/ourblock.jpg" />
+        </div>
+        <div class="station span8">
+          <p class="label label-info text-left">Category</p>
+          <h1 class="text-left">{{ block('title') }}<small> {{ stationdescription }} </small></h1>
+        </div>
+      </div>
+    </div>
+
+
+    {% block player %}{% endblock %}
+
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

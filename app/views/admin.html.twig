@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Station Administration{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block navigation %}
+    {{ parent() }}
+        <!-- nav -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- todo $route->generate() -->
+                    <a class="brand" href="">{{ block('title') }}</a>
+                       <ul class="nav pull-right">
+                        {% for item in nav %}
+                            <li><a href="{{item.alias}}">{{item.name}}</a></li>
+                        {% endfor %}
+                       </ul>
+                </div>
+            </div>
+        </nav>
+
+{% endblock %}
+
+{% block content %}
+    <h1>Admin</h1>
+    <p class="important">
+        Welcome to the admin page, {{name}}.
+    </p>
+
+    {% block charts %}{% endblock %}
+
+    {% block table %}{% endblock %}
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}
