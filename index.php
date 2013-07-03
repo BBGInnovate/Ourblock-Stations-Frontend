@@ -4,9 +4,10 @@ require('bootstrap.php');
 $router = new AltoRouter();
 $router->setBasePath('/');
 //map routes to Controller class and action methods
-$router->map('GET|POST','home', array('c' => 'DefaultController', 'a' => 'indexAction'), 'home');
+$router->map('GET','home', array('c' => 'DefaultController', 'a' => 'indexAction'), 'home');
 $router->map('GET|POST','admin', array('c' => 'DefaultController', 'a' => 'adminAction'), 'admin');
 $router->map('GET|POST','register', array('c' => 'DefaultController', 'a' => 'registerAction'), 'register');
+$router->map('GET','gettweets', array('c' => 'DefaultController', 'a' => 'twitterAction'), 'gettweets');
 
 /* example routes
 	$router->map('GET','/users/', array('c' => 'UserController', 'a' => 'ListAction'));

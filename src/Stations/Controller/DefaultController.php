@@ -52,4 +52,22 @@ class DefaultController
 
     }
 
+    public function twitterAction($params, $route)
+    {
+        //Get Twitter search and output json
+        //"Single User OAuth" (Using the OAuth key generated and assigned by the Twitter App)
+        $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET);
+        //get querystring params as ASSOC array
+        $url = parse_url($_SERVER['REQUEST_URI']);
+        $queryParts = explode('&', $url['query']); 
+        $queryParams = array(); 
+        foreach ($queryParts as $part) { 
+            $item = explode('=', $part); 
+            $queryParams[$item[0]] = $item[1]; 
+        } 
+        $data = json_encode($connection->get("search/tweets", $queryParams));
+        header('Content-Type: application/json');
+        echo $data;
+    }
+
 }
